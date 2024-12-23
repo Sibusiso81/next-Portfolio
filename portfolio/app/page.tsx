@@ -1,7 +1,6 @@
 'use client'
 import { Menu } from "lucide-react";
-import Image from "next/image";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence} from "framer-motion";
 import { useState } from "react";
 import Navbar from "./Components/Navbar/Navbar";
 export default function Home() {
