@@ -1,5 +1,5 @@
 "use client";
-import { ArrowDown, Menu, X } from "lucide-react";
+import { ArrowDown,  Menu,  X } from "lucide-react";
 import { AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import Navbar from "./Components/Navbar/Navbar";
@@ -11,7 +11,7 @@ export default function Home() {
 
   return (
     <main className="flex flex-col space-y-10 overflow-x-hidden">
-      <section className="w-full h-screen p-4 pt-4 bg-white dark:bg-neutral-950 text-black dark:text-[#eaeaea] overflow-x-hidden ">
+      <section className="w-full h-screen p-4 pt-4 bg-white dark:bg-neutral-950 text-black dark:text-[#eaeaea] overflow-hidden ">
         <div className="w-full p-2 border-[#eaeaea] flex justify-between items-center rounded-md relative z-40 flex-1">
           <h1 className="font-bold dark:text-[#eaeaea] text-lg text-black">
             Portfolio®
@@ -63,12 +63,12 @@ export default function Home() {
           </div>
           {/* Home text */}
           <div className=" font-bold font-mono pt-10 space-y-4 max-w-screen-lg lg:justify-center mx-auto">
-            <h1 className="text-2lg lg:text-4xl">
+            <h1 className="text-2xl lg:text-3xl">
               An aspiring Human Resources practitioner who has in persuit of
               this status has also taken to task the opportunity to equipt
               himself with Web devlopment knowledge.
             </h1>
-            <p className="text-muted-foreground text-xs md:text-lg italic pt-6 lg:text-2xl">
+            <p className="text-muted-foreground text-sm md:text-lg italic pt-6 lg:text-2xl">
               &apos;&apos;There are no limits to growth because there are no
               limits of human intelligence&#44;imagination and
               wonder.&apos;&apos;
@@ -83,7 +83,7 @@ export default function Home() {
             </p>
           </div>
         </div>
-        <div className="w-full h-[2px] bg-neutral-800  mt-20 md:mt-58 "></div>
+        <div className="w-full h-[2px] bg-neutral-800  mt-48 md:mt-58 lg:mt-60 "></div>
         <div className="flex flex-col md:flex-row justify-between p-2">
           <p>Based on Johannesburg &#44;South Africa</p>
           <div className="flex flex-row space-x-1">
@@ -161,7 +161,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="w-screen h-screen  p-4 lg:p-20 font-mono  ">
+      <section className="w-screen h-screen justify-center  p-4 lg:p-20 font-mono  ">
      <h1 className=" text-xl md:text-2xl lg:text-3xl font-bold space-y-6 pb-14 lg:pb-20"> How I Can Add Value to Your Team</h1>
        <div className="grid grid-cols-4 gap-6 lg:gap-2">
          {/*  */}
@@ -226,8 +226,8 @@ export default function Home() {
           </div>
         </div>
        </div>
-           
       </section>
+     
     </main>
   );
 }
