@@ -3,33 +3,11 @@ import { ArrowDown, Menu, X } from "lucide-react";
 import { AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import Navbar from "./Components/Navbar/Navbar";
-import { motion } from "framer-motion";
 import { ModeToggle } from "./Components/mode-toggle";
-import Bootstrap from "./Components/bootstrap";
-import CSS from "./Components/css";
-import TypeScript from "./Components/typescript";
-import Git from "./Components/git";
-import HTML5 from "./Components/html";
-import TailwindCSS from "./Components/tailwind";
-import Nextjs from "./Components/next";
-import Vite from "./Components/vite";
-import JavaScript from "./Components/js";
-import Vercel from "./Components/vercel";
 import Image from "next/image";
 export default function Home() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const marquee = [
-    <Bootstrap width={40} height={30} />,
-    <CSS width={40} height={30} />,
-    <TypeScript width={40} height={30} />,
-    <Git width={40} height={30} />,
-    <HTML5 width={40} height={30} />,
-    <TailwindCSS width={40} height={30} />,
-    <Nextjs width={40} height={30} />,
-    <Vite width={40} height={30} />,
-    <JavaScript width={40} height={30} />,
-    <Vercel width={40} height={30} />,
-  ];
+ 
   return (
     <section className="w-full h-full p-4 pt-4 bg-white dark:bg-neutral-950 text-black dark:text-[#eaeaea] overflow-x-hidden ">
       <div className="w-full p-2 border-[#eaeaea] flex justify-between items-center rounded-md relative z-40 flex-1">
