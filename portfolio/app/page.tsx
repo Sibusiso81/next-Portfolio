@@ -192,7 +192,7 @@ export default function Home() {
           </div>
           {/* Description */}
           <div className="dark:text-muted-foreground">
-            <p>I'm passionate about exploring and implementing innovative HR solutions, such as AI-powered recruitment tools or employee engagement platforms, to drive efficiency and improve outcomes.</p>
+            <p>I&apos;m passionate about exploring and implementing innovative HR solutions, such as AI-powered recruitment tools or employee engagement platforms, to drive efficiency and improve outcomes.</p>
           </div>
         </div>
             {/*  */}
@@ -207,7 +207,7 @@ export default function Home() {
           </div>
           {/* Description */}
           <div className="dark:text-muted-foreground">
-            <p>As a self-taught developer, I'm a fast learner and highly adaptable. I'm eager to embrace new technologies and challenges, and I believe in continuous learning and professional growth.</p>
+            <p>As a self-taught developer, I&apos;m a fast learner and highly adaptable. I&apos;m eager to embrace new technologies and challenges, and I believe in continuous learning and professional growth.</p>
           </div>
         </div>
             {/*  */}
