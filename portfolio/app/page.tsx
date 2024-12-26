@@ -13,7 +13,7 @@ export default function Home() {
     <main className="flex flex-col space-y-10 overflow-x-hidden">
       <section className="w-full h-fit p-4 pt-4 bg-white dark:bg-neutral-950 text-black dark:text-[#eaeaea] overflow-x-hidden ">
         <div className="w-full p-2 border-[#eaeaea] flex justify-between items-center rounded-md relative z-40 flex-1">
-          <h1 className="font-bold dark:text-[#eaeaea] text-xl text-black">
+          <h1 className="font-bold dark:text-[#eaeaea] text-lg text-black">
             Portfolio®
           </h1>
           <div className="flex flex-row space-x-2 items-center">
@@ -47,7 +47,7 @@ export default function Home() {
               priority
             />
 
-            <div className="text-xl font-mono  items-end place-self-end space-y-1">
+            <div className="text-lg font-mono  items-end place-self-end space-y-1">
               <h1 className="font-bold">Sibusiso Zulu</h1>
               <div className="flex flex-row  space-x-1 place-self-end">
                 <div className="w-fit my-auto place-self-center">
@@ -63,19 +63,19 @@ export default function Home() {
           </div>
           {/* Home text */}
           <div className=" font-bold font-mono pt-10 space-y-4 max-w-screen-lg lg:justify-center mx-auto">
-            <h1 className="text-2xl lg:text-4xl">
+            <h1 className="text-2lg lg:text-4lg">
               An aspiring Human Resources practitioner who has in persuit of
               this status has also taken to task the opportunity to equipt
               himself with Web devlopment knowledge.
             </h1>
-            <p className="text-muted-foreground text-xs md:text-lg italic pt-6 lg:text-2xl">
+            <p className="text-muted-foreground hidden md:block text-xs md:text-lg italic pt-6 lg:text-2lg">
               &apos;&apos;There are no limits to growth because there are no
               limits of human intelligence&#44;imagination and
               wonder.&apos;&apos;
               <br />
               <span
                 className="text-center my-auto
-          text-xs  md:text-lg lg:text-2xl"
+          text-xs  md:text-lg lg:text-2lg"
               >
                 
                 -Ronald Reagan
@@ -92,13 +92,25 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="w-screen h-fit flex flex-col p-3  md:p-20 lg:p-24 lg:pl-52 justify-center space-y-4 mt-32 ">
+      <section className="w-screen h-fit flex flex-col p-3  md:p-20 lg:p-24 lg:pl-44 xl:pl-52 justify-center space-y-4 mt-32 ">
         <h1 className="text-[30px] lg:text-[38px] font-bold ">About</h1>
-        <div className="grid grid-cols-2 md:text-lg lg:text-2xl gap-6">
+        <div className="grid grid-cols-2 md:text-lg lg:text-2lg gap-6">
           {/* About header/ image / title text */}
 
           <div className="col-span-2 lg:col-span-1 flex flex-col lg:flex-row space-y-3 lg:space-x-4 h-fit lg:pt-6">
             <div className="object-cover lg:justify-self-center lg:place-self-center">
+            <Image
+                alt="hero-profile-image"
+                src="https://i.ibb.co/2sYc7GR/IMG-7451.png"
+                width={65}
+                height={65}
+                /*   style={{
+                maxWidth: "30%"&#44;
+                height: "30%"&#44;
+              }} */
+                className="rounded-full object-cover lg:hidden "
+                priority
+              />
               <Image
                 alt="hero-profile-image"
                 src="https://i.ibb.co/2sYc7GR/IMG-7451.png"
@@ -108,12 +120,12 @@ export default function Home() {
                 maxWidth: "30%"&#44;
                 height: "30%"&#44;
               }} */
-                className="rounded-full object-cover "
+                className="rounded-full object-cover hidden lg:block "
                 priority
               />
             </div>
 
-            <div className="xl:max-w-96 ">
+            <div className="xl:max-w-96 lg:max-w-72 ">
               <p className="font-semibold font-sans md:text-lg tracking-wide ">
                 I&apos;m Sibusiso&#44; a driven and results-oriented HRM student
                 and self tought Web developer.
@@ -121,7 +133,7 @@ export default function Home() {
             </div>
           </div>
           {/* About text */}
-          <div className="col-span-2 lg:col-span-1 xl:p-10 text-sm">
+          <div className="col-span-2 lg:col-span-1 lg:p-10 text-sm">
             <div className="text-muted-foreground ">
               Hi&#44; I&apos;m Sibusiso&#44; a driven and results&#8212;oriented
               individual with a unique blend of technical and human resources
