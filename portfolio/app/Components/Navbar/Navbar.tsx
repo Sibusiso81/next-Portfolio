@@ -47,7 +47,7 @@ function Navbar() {
     }
   return (
     <div className="w-screen h-screen overflow-hidden fixed inset-0 font-mono">
-      <div className="w-full h-full grid grid-cols-4 md:grid-cols-6 lg:grid-cols-12 grid-rows-1">
+      <div className="w-full h-full grid grid-cols-2 md:grid-cols-6 lg:grid-cols-12 grid-rows-1 gap-0">
         {[
           1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
         ].map((_, i) => (

@@ -11,7 +11,7 @@ export default function Home() {
 
   return (
     <main className="flex flex-col space-y-10 overflow-x-hidden">
-      <section className="w-full h-fit p-4 pt-4 bg-white dark:bg-neutral-950 text-black dark:text-[#eaeaea] overflow-x-hidden ">
+      <section className="w-full h-screen p-4 pt-4 bg-white dark:bg-neutral-950 text-black dark:text-[#eaeaea] overflow-x-hidden ">
         <div className="w-full p-2 border-[#eaeaea] flex justify-between items-center rounded-md relative z-40 flex-1">
           <h1 className="font-bold dark:text-[#eaeaea] text-lg text-black">
             Portfolio®
@@ -63,19 +63,19 @@ export default function Home() {
           </div>
           {/* Home text */}
           <div className=" font-bold font-mono pt-10 space-y-4 max-w-screen-lg lg:justify-center mx-auto">
-            <h1 className="text-2lg lg:text-4lg">
+            <h1 className="text-2lg lg:text-4xl">
               An aspiring Human Resources practitioner who has in persuit of
               this status has also taken to task the opportunity to equipt
               himself with Web devlopment knowledge.
             </h1>
-            <p className="text-muted-foreground text-xs md:text-lg italic pt-6 lg:text-2lg">
+            <p className="text-muted-foreground text-xs md:text-lg italic pt-6 lg:text-2xl">
               &apos;&apos;There are no limits to growth because there are no
               limits of human intelligence&#44;imagination and
               wonder.&apos;&apos;
               <br />
               <span
                 className="text-center my-auto
-          text-xs  md:text-lg lg:text-2lg"
+          text-xs  md:text-lg lg:text-2xl"
               >
                 
                 -Ronald Reagan
@@ -83,7 +83,7 @@ export default function Home() {
             </p>
           </div>
         </div>
-        <div className="w-full h-[2px] bg-neutral-800  mt-16 md:mt-48 lg:mt-58"></div>
+        <div className="w-full h-[2px] bg-neutral-800  mt-40 md:mt-60 lg:mt-72 xl:mt-96"></div>
         <div className="flex flex-col md:flex-row justify-between p-2">
           <p>Based on Johannesburg &#44;South Africa</p>
           <div className="flex flex-row space-x-1">
