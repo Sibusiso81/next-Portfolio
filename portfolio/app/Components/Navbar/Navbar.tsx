@@ -47,7 +47,7 @@ function Navbar() {
     }
   return (
     <div className="w-screen h-screen overflow-hidden fixed inset-0 font-mono">
-      <div className="w-full h-full grid grid-cols-12 grid-rows-1">
+      <div className="w-full h-full grid grid-cols-4 md:grid-cols-6 lg:grid-cols-12 grid-rows-1">
         {[
           1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
         ].map((_, i) => (
@@ -64,37 +64,36 @@ function Navbar() {
           </motion.div>
         ))}
       </div>
-      <section className="w-full h-full absolute inset-0 flex justify-center items-center z-30 ">
+      <section className="w-full h-full absolute inset-0 flex justify-center items-center z-30 p-1 font-dmsans">
         <ul className="w-[900px] leading-none space-y-2">
           <li className="overflow-hidden">
             <motion.div variants={navLink} initial='hidden' animate='show' exit='exit' className=" p-1">
-              <a href="#" className="text-[80px] hover:text-[#eaeaea] h-fit ">
-                About
-              </a>
-              <Link href={'/About'}/>
+              <Link href={'/About'} className="text-[40px] md:text-[60px] hover:text-[#eaeaea] h-fit p-1 ">
+              About
+              </Link>
             </motion.div>
           </li>
           
           <li className="overflow-hidden">
             <motion.div variants={navLink} initial='hidden' animate='show' exit='exit' className=" p-1">
-              <a href="#" className="text-[80px] hover:text-[#eaeaea] h-fit">
-                 Projects
-              </a>
-              <Link href={'/projects'} className="text-[80px] hover:text-[#eaeaea] h-fit"/>
+             
+              <Link href={'/projects'} className="text-[40px] md:text-[60px] hover:text-[#eaeaea] h-fit p-1">
+              Projects
+              </Link>
             </motion.div>
           </li>
           <li className="overflow-hidden">
             <motion.div variants={navLink} initial='hidden' animate='show' exit='exit' className=" p-1">
-              <a href="#" className="text-[80px] hover:text-[#eaeaea] h-fit">
-                Linkdin
-              </a>
+              <Link href={'https://www.linkedin.com/in/sibusiso-zulu/'} className="text-[40px] md:text-[60px] hover:text-[#eaeaea] h-fit p-1">
+                Linkedin
+              </Link>
             </motion.div>
           </li>
           <li className="overflow-hidden">
             <motion.div variants={navLink} initial='hidden' animate='show' exit='exit' className=" p-1">
-              <a href="#" className="text-[80px] hover:text-[#eaeaea] h-fit">
-                Contact
-              </a>
+              <Link href={'/Contact'} className="text-[40px] md:text-[60px] hover:text-[#eaeaea] h-fit p-1">
+              Contact
+              </Link>
             </motion.div>
           </li>
         </ul>
