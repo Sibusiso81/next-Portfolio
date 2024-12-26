@@ -68,7 +68,7 @@ export default function Home() {
               this status has also taken to task the opportunity to equipt
               himself with Web devlopment knowledge.
             </h1>
-            <p className="text-muted-foreground hidden md:block text-xs md:text-lg italic pt-6 lg:text-2lg">
+            <p className="text-muted-foreground text-xs md:text-lg italic pt-6 lg:text-2lg">
               &apos;&apos;There are no limits to growth because there are no
               limits of human intelligence&#44;imagination and
               wonder.&apos;&apos;
