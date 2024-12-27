@@ -10,8 +10,8 @@ export default function Home() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
-    <main className="flex flex-col space-y-10 overflow-x-hidden">
-      <section className="w-full h-screen p-4 pt-4 bg-white dark:bg-neutral-950 text-black dark:text-[#eaeaea] overflow-hidden ">
+    <main className="flex flex-col space-y-10 overflow-hidden">
+      <section className="w-full h-screen p-4 pt-4 bg-white dark:bg-neutral-950 text-black dark:text-[#eaeaea] overflow-x-hidden ">
         <div className="w-full p-2 border-[#eaeaea] flex justify-between items-center rounded-md relative z-40 flex-1">
           <h1 className="font-bold dark:text-[#eaeaea] text-lg text-black">
             Portfolio®
@@ -83,9 +83,9 @@ export default function Home() {
             </p>
           </div>
         </div>
-        <div className="w-full h-[2px] bg-neutral-800  mt-48 md:mt-58 lg:mt-60 "></div>
+        <div className="w-full h-[2px] bg-neutral-800  mt-16 md:mt-48 lg:mt-36 xl:mt-44  "></div>
         <div className="flex flex-col md:flex-row justify-between p-2">
-          <p>Based on Johannesburg &#44;South Africa</p>
+          {/* <p>Based on Johannesburg &#44;South Africa</p> */}
           <div className="flex flex-row space-x-1">
             <p>Scroll for more</p>
             <ArrowDown className="stroke-green-500" />
