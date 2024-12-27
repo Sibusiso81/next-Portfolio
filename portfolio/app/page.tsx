@@ -161,7 +161,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="w-screen h-screen justify-center  p-4 lg:p-20 font-mono  ">
+      <section className="w-screen h-fit lg:h-screen justify-center  p-4 lg:p-20 font-mono  ">
      <h1 className=" text-xl md:text-2xl lg:text-3xl font-bold space-y-6 pb-14 lg:pb-20"> How I Can Add Value to Your Team</h1>
        <div className="grid grid-cols-4 gap-6 lg:gap-2">
          {/*  */}
