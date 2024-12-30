@@ -73,7 +73,7 @@ export function ProfileForm() {
       subject: `${values.username} Reached Out!`,
       body: `<h1>${values.message}</h1>`,
     });
-    <Toaster richColors position="top-right" />
+    
     console.log("Form submitted:", values);
   
   };
