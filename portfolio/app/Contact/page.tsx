@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -15,6 +15,9 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { sendMail } from "@/lib/mail";
+import Footer from "../Components/Footer/Footer";
+import { Toaster, toast } from 'sonner'
+import { redirect } from "next/navigation";
 const formSchema = z.object({
   username: z
     .string()
@@ -29,16 +32,16 @@ const formSchema = z.object({
     .min(5, { message: "Message must be at least 5 characters long." }),
 });
 
-const template = `
 
-`
 
 export default function Page() {
+  
   return (
     <section
       className="w-screen max-w-screen-sm lg:max-w-screen-lg h-fit lg:h-screen flex flex-col lg:flex-row p-4 space-y-6 lg:pl-6 lg:p-10
       xl:max-w-screen-2xl xl:justify-around"
     >
+      <Toaster position={`${window.innerWidth < 768 ?'bottom-center':'top-right'}`}/>
       <div className="flex flex-col space-y-3 lg:w-1/2">
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold max-w-screen-sm">Reach out ✦</h1>
         <p className="text-muted-foreground text-xs md:text-md text-pretty py-4">
@@ -52,11 +55,13 @@ export default function Page() {
       <div className="md:pl-10 lg:pl-0 lg:w-1/2 max-w-screen-sm">
         <ProfileForm />
       </div>
+      <Footer/>
     </section>
   );
 }
 
 export function ProfileForm() {
+  const [emailSent,setEmailSent]= useState(false)
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -73,10 +78,15 @@ export function ProfileForm() {
       subject: `${values.username} Reached Out!`,
       body: `<h1>${values.message}</h1>`,
     });
-    
+    toast.success('Email sent!')
+   setEmailSent(true)
     console.log("Form submitted:", values);
-  
-  };
+  setTimeout(()=>{
+    redirect('/')
+  },200) 
+  }
+
+  ;
 
   return (
     <Form {...form}>
@@ -133,4 +143,5 @@ export function ProfileForm() {
       </form>
     </Form>
   );
+  
 }

@@ -42,12 +42,13 @@ export async function sendMail({ to, name, subject, body }: Mail) {
   try {
     const sendResult = await transport.sendMail({
       from: SMTP_EMAIL,
+      
       to:SMTP_EMAIL,
      subject,
       html: body,
     });
     console.log(sendResult);
-    
+    console.log(`name:${name},To:${to}`)
     
   } catch (error) {
     console.log(error);

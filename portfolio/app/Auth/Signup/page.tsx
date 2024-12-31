@@ -12,15 +12,16 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Textarea } from "@/components/ui/textarea";
+
 import { Input } from "@/components/ui/input";
-import { sendMail } from "@/lib/mail";
-import {  toast, Toaster } from 'sonner'
+
 import { Hacker } from "@/app/Components/dashboardSignInSvg";
 import Google from "@/app/Components/google";
 import Github from "@/app/Components/github";
-import { Target } from "lucide-react";
+
 import { signup } from "./actions";
+import Link from "next/link";
+import Footer from "@/app/Components/Footer/Footer";
 const formSchema = z.object({
   password: z
   .string()
@@ -35,19 +36,23 @@ email: z
 
 export default function Page() {
   return (
-    <section
-      className="max-w-screen-md  h-screen flex flex-col lg:flex-row p-4 space-y-6 mx-auto  justify-center items-center
-     "
-    >
-      <div className="lg:w-1/2 lg:p-4">
-        <Hacker />
-      </div>
-      
-      <div className="w-full md:w-1/2  space-y-4 justify-center items-center">
-      <h1 className="text-xl font-semibold text-center">Welcome </h1>
-        <ProfileForm />
-      </div>
-    </section>
+    <>
+     <section
+         className="max-w-screen-md  h-screen flex flex-col lg:flex-row p-4 space-y-6 mx-auto  justify-center items-center
+        "
+       >
+         <div className="lg:w-1/2 lg:p-4">
+           <Hacker />
+         </div>
+         
+         <div className="w-full md:w-1/2  space-y-4 justify-center items-center">
+         <h1 className="text-xl font-semibold text-center">Welcome Mr Zulu </h1>
+           <ProfileForm />
+         </div>
+        
+       </section>
+       <Footer/>
+    </>
   );
 }
 
@@ -74,11 +79,8 @@ export function ProfileForm() {
   
   }; */
 
-  const [email,setEmail] = useState<string>('');
-  const [password,setPassword] = useState<string>('');
 
-console.log(email)
-console.log(password)
+
   return (
     <Form {...form}>
       <form className="space-y-6 lg:space-y-8">
@@ -135,7 +137,8 @@ console.log(password)
                  <Github/>Sign in with GitHub
                  </Button>
                  </div>
-        <Button 
+       <div className="space-y-1">
+       <Button 
         type="submit"
          className="bg-neutral-800/30 p-4 w-full hover:bg-neutral-800/20 text-white"
          formAction={signup}
@@ -143,6 +146,20 @@ console.log(password)
           
           Sign up
         </Button>
+      
+        <p className="text-center text-muted-foreground">or</p>
+        
+        <Link href={'/Auth/Login'}>
+        <Button 
+        type="submit"
+         className="bg-neutral-800/30 p-4 w-full hover:bg-neutral-800/20 text-white"
+         
+         >
+          
+          Log in
+        </Button>
+        </Link>
+       </div>
       </form>
     </Form>
   );
