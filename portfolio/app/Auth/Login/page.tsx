@@ -33,7 +33,8 @@ const formSchema = z.object({
     .max(100, { message: "Email must be no longer than 100 characters." }),
 });
 
-const ProfileForm: React.FC = () => {
+// Component for the login form
+function ProfileForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -108,9 +109,10 @@ const ProfileForm: React.FC = () => {
       </form>
     </Form>
   );
-};
+}
 
-const Page: React.FC = () => {
+// Main page component
+export default function Page() {
   return (
     <>
       <section className="max-w-screen-md h-screen flex flex-col lg:flex-row p-4 space-y-6 mx-auto justify-center items-center">
@@ -127,6 +129,4 @@ const Page: React.FC = () => {
       <Footer />
     </>
   );
-};
-
-export default Page;
+}
