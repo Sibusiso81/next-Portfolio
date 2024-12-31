@@ -66,7 +66,7 @@ export default function Page() {
             <br />
             <br />
             If you are looking for a dedicated, adaptable, and growth-oriented
-            individual, I would be delighted to hear from you. Let’s work
+            individual, I would be delighted to hear from you. Let&apos;s work
             together to create impactful solutions and forge a path toward
             success.
           </p>
@@ -80,7 +80,7 @@ export default function Page() {
   );
 }
 
-const ProfileForm = () => {
+export const ProfileForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {

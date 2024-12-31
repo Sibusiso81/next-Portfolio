@@ -34,7 +34,7 @@ const formSchema = z.object({
 });
 
 // Component for the login form
-const  ProfileForm = ()=> {
+export const  ProfileForm = ()=> {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
