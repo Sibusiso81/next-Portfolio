@@ -32,12 +32,12 @@ type responseFromUser ={
 }
 
 export async function sendMail({ to, name, subject, body}:Mail){
-  const { SMPT_PASSWORD, SMTP_EMAIL } = process.env;
+  const { SMTP_PASSWORD, SMTP_EMAIL } = process.env;
   const transport = nodemailer.createTransport({
     service: "gmail",
     auth: {
       user: SMTP_EMAIL,
-      pass: SMPT_PASSWORD,
+      pass: SMTP_PASSWORD,
     },
   });
 
@@ -52,10 +52,9 @@ export async function sendMail({ to, name, subject, body}:Mail){
   try {
     const sendResult = await transport.sendMail({
       from: SMTP_EMAIL,
-    
-      to:SMTP_EMAIL,
-     subject,
-      html: body,
+      to: to || SMTP_EMAIL,
+      subject: subject || 'No Subject',
+      text: body || 'No Body',
     });
     console.log(sendResult);
     console.log(`name:${name},To:${to}`)

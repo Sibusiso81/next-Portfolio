@@ -40,7 +40,7 @@ export default function Home() {
         hours >= 12 ? "PM" : "AM"
       }`
     );
-    //hours % 12 || 12 is used to convert 24-hour clock to 12-hour
+
   }
   useEffect(() => {
     getTime();
