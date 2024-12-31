@@ -14,7 +14,7 @@ use shadcn components
 
 
 import nodemailer from "nodemailer";
-import Handlebars, { templates } from "handlebars";
+import Handlebars from "handlebars";
 import { reachEoutTemplate } from "./Templates/userReachOut";
 type Mail = {
   to?:string;

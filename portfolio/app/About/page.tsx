@@ -8,7 +8,7 @@ import Stack from "../Components/Stack/stack";
 import TailwindCSS from "../Components/tailwind";
 import Nextjs from "../Components/next";
 import Supabase from "../Components/supabase";
-import Footer from "../Components/Footer/Footer";
+
 
 function page() {
   return (

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -16,7 +16,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { complileReachoutTemplate, sendMail } from "@/lib/mail";
 import Footer from "../Components/Footer/Footer";
-import { Toaster, toast } from 'sonner'
+import { Toaster, toast } from "sonner";
 import { redirect } from "next/navigation";
 const formSchema = z.object({
   username: z
@@ -32,39 +32,48 @@ const formSchema = z.object({
     .min(5, { message: "Message must be at least 5 characters long." }),
 });
 
-
-
 export default function Page() {
-  
   return (
-<main className="overflow-x-hidden ">
-<section
-      className="w-screen max-w-screen-sm lg:max-w-screen-lg h-fit  flex flex-col lg:flex-row p-4 space-y-6 lg:pl-6 lg:p-20
+    <main className="overflow-x-hidden ">
+      <section
+        className="w-screen max-w-screen-sm lg:max-w-screen-lg h-fit  flex flex-col lg:flex-row p-4 space-y-6 lg:pl-6 lg:p-20
       xl:max-w-screen-2xl xl:justify-around"
-    >
-      <Toaster position={`${window.innerWidth < 768 ?'bottom-center':'top-right'}`}/>
-      <div className="flex flex-col space-y-3 lg:w-1/2">
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold max-w-screen-sm">Reach out ✦</h1>
-        <p className="text-muted-foreground text-xs md:text-md text-pretty py-4">
-          I am always eager to connect with individuals and organizations that align with my passion for human resources and technology.
-         <br /><br />
-          As an HRM student and a self-taught developer, I am open to mentorships, job shadowing opportunities, or collaborative projects that will help me grow and contribute meaningfully to these fields.
-          <br /><br />
-          If you are looking for a dedicated, adaptable, and growth-oriented individual, I would be delighted to hear from you. Let’s work together to create impactful solutions and forge a path toward success.
-        </p>
-      </div>
-      <div className="md:pl-10 lg:pl-0 lg:w-1/2 max-w-screen-sm">
-        <ProfileForm />
-      </div>
-      
-    </section>
-    <Footer/>
-</main>
+      >
+        <Toaster
+          position={`${
+            window.innerWidth < 768 ? "bottom-center" : "top-right"
+          }`}
+        />
+        <div className="flex flex-col space-y-3 lg:w-1/2">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold max-w-screen-sm">
+            Reach out ✦
+          </h1>
+          <p className="text-muted-foreground text-xs md:text-md text-pretty py-4">
+            I am always eager to connect with individuals and organizations that
+            align with my passion for human resources and technology.
+            <br />
+            <br />
+            As an HRM student and a self-taught developer, I am open to
+            mentorships, job shadowing opportunities, or collaborative projects
+            that will help me grow and contribute meaningfully to these fields.
+            <br />
+            <br />
+            If you are looking for a dedicated, adaptable, and growth-oriented
+            individual, I would be delighted to hear from you. Let’s work
+            together to create impactful solutions and forge a path toward
+            success.
+          </p>
+        </div>
+        <div className="md:pl-10 lg:pl-0 lg:w-1/2 max-w-screen-sm">
+          <ProfileForm />
+        </div>
+      </section>
+      <Footer />
+    </main>
   );
 }
 
 export function ProfileForm() {
-  const [emailSent,setEmailSent]= useState(false)
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -75,28 +84,29 @@ export function ProfileForm() {
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    const email = values.email
-    const username =values.username
-    const message= values.message
+    const email = values.email;
+    const username = values.username;
+    const message = values.message;
     await sendMail({
       to: "zulusibusiso81@gmail.com",
-      name:`${values.email}going by:${values.username}`,
+      name: `${values.email}going by:${values.username}`,
       subject: `${values.username} Reached Out!`,
-      body: await complileReachoutTemplate({email,username,message}) ,
+      body: await complileReachoutTemplate({ email, username, message }),
     });
-    toast.success('Email sent!')
-   setEmailSent(true)
-    console.log("Form submitted:", values);
-  setTimeout(()=>{
-    redirect('/')
-  },300) 
-  }
+    toast.success("Email sent!");
 
-  ;
+    console.log("Form submitted:", values);
+    setTimeout(() => {
+      redirect("/");
+    }, 300);
+  };
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 lg:space-y-8">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="space-y-6 lg:space-y-8"
+      >
         <FormField
           control={form.control}
           name="username"
@@ -104,9 +114,11 @@ export function ProfileForm() {
             <FormItem>
               <FormLabel>Name</FormLabel>
               <FormControl>
-                <Input 
-                className="p-4"
-                placeholder="Enter your name" {...field} />
+                <Input
+                  className="p-4"
+                  placeholder="Enter your name"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -119,8 +131,7 @@ export function ProfileForm() {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input 
-                placeholder="Enter your email" type="email" {...field} />
+                <Input placeholder="Enter your email" type="email" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -143,11 +154,13 @@ export function ProfileForm() {
             </FormItem>
           )}
         />
-        <Button type="submit" className="bg-neutral-800/30 p-4 w-full hover:bg-neutral-800/20 text-white">
+        <Button
+          type="submit"
+          className="bg-neutral-800/30 p-4 w-full hover:bg-neutral-800/20 text-white"
+        >
           Submit
         </Button>
       </form>
     </Form>
   );
-  
 }
