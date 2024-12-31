@@ -43,7 +43,7 @@ export default function Page() {
         <Toaster
           position={`${
             width< 768 ? "bottom-center" : "top-right"
-          }`}
+          }` }
         />
         <div className="flex flex-col space-y-3 lg:w-1/2">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold max-w-screen-sm">
@@ -74,7 +74,7 @@ export default function Page() {
   );
 }
 
-const  ProfileForm=() {
+const  ProfileForm=()=> {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
