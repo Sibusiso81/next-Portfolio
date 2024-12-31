@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
-import { sendMail } from "@/lib/mail";
+import { complileReachoutTemplate, sendMail } from "@/lib/mail";
 import Footer from "../Components/Footer/Footer";
 import { Toaster, toast } from 'sonner'
 import { redirect } from "next/navigation";
@@ -37,8 +37,9 @@ const formSchema = z.object({
 export default function Page() {
   
   return (
-    <section
-      className="w-screen max-w-screen-sm lg:max-w-screen-lg h-fit lg:h-screen flex flex-col lg:flex-row p-4 space-y-6 lg:pl-6 lg:p-10
+<main className="overflow-x-hidden ">
+<section
+      className="w-screen max-w-screen-sm lg:max-w-screen-lg h-fit  flex flex-col lg:flex-row p-4 space-y-6 lg:pl-6 lg:p-20
       xl:max-w-screen-2xl xl:justify-around"
     >
       <Toaster position={`${window.innerWidth < 768 ?'bottom-center':'top-right'}`}/>
@@ -55,8 +56,10 @@ export default function Page() {
       <div className="md:pl-10 lg:pl-0 lg:w-1/2 max-w-screen-sm">
         <ProfileForm />
       </div>
-      <Footer/>
+      
     </section>
+    <Footer/>
+</main>
   );
 }
 
@@ -72,18 +75,21 @@ export function ProfileForm() {
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    const email = values.email
+    const username =values.username
+    const message= values.message
     await sendMail({
       to: "zulusibusiso81@gmail.com",
-      name: values.username,
+      name:`${values.email}going by:${values.username}`,
       subject: `${values.username} Reached Out!`,
-      body: `<h1>${values.message}</h1>`,
+      body: await complileReachoutTemplate({email,username,message}) ,
     });
     toast.success('Email sent!')
    setEmailSent(true)
     console.log("Form submitted:", values);
   setTimeout(()=>{
     redirect('/')
-  },200) 
+  },300) 
   }
 
   ;

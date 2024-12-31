@@ -1,4 +1,4 @@
-"use server"
+'use server'
 /* 
 Pages to build 
 1)About
@@ -14,14 +14,24 @@ use shadcn components
 
 
 import nodemailer from "nodemailer";
+import Handlebars, { templates } from "handlebars";
+import { reachEoutTemplate } from "./Templates/userReachOut";
 type Mail = {
-  to: string;
-  name: string;
-  subject: string;
-  body: string;
+  to?:string;
+  name?:string;
+  subject?:string;
+  body?:string;
+  username?:string,
+  email?:string,
+ 
 };
+type responseFromUser ={
+  email:string,
+  message:string,
+  username:string,
+}
 
-export async function sendMail({ to, name, subject, body }: Mail) {
+export async function sendMail({ to, name, subject, body}:Mail){
   const { SMPT_PASSWORD, SMTP_EMAIL } = process.env;
   const transport = nodemailer.createTransport({
     service: "gmail",
@@ -42,7 +52,7 @@ export async function sendMail({ to, name, subject, body }: Mail) {
   try {
     const sendResult = await transport.sendMail({
       from: SMTP_EMAIL,
-      
+    
       to:SMTP_EMAIL,
      subject,
       html: body,
@@ -55,4 +65,15 @@ export async function sendMail({ to, name, subject, body }: Mail) {
     
 
   }
+}
+
+export async  function complileReachoutTemplate({email,message,username}:responseFromUser){
+const template = Handlebars.compile(reachEoutTemplate);
+const htmlBody = template({
+  email:email,
+  username:username,
+  message:message,
+  
+});
+return htmlBody
 }

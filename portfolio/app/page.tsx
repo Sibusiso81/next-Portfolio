@@ -20,24 +20,18 @@ import Card from "./Components/Card/Card";
 import { BorderBeam } from "@/components/ui/border-beam";
 import WordRotate from "@/components/ui/word-rotate";
 import Footer from "./Components/Footer/Footer";
-import { Toaster,toast } from "sonner";
 
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [time, setTime] = useState<string>();
-  const [timePeriod, setTimePeriod] = useState<string>();
+ 
 
   function getTime() {
     const date = new Date();
     const hours = date.getHours();
     const mins = date.getMinutes();
-
-    //Determine if it's A&#44; or PM
-    const period = hours >= 12 ? "PM" : "AM";
-    //update state
-    console.log(period);
-    setTimePeriod(period);
+    
     console.log(
       `current time :${hours % 12 || 12}:${mins < 10 ? "0" : ""}${mins}`
     );
