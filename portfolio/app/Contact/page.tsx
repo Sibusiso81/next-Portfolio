@@ -33,6 +33,7 @@ const formSchema = z.object({
 });
 
 export default function Page() {
+  const width = window.innerWidth
   return (
     <main className="overflow-x-hidden ">
       <section
@@ -41,7 +42,7 @@ export default function Page() {
       >
         <Toaster
           position={`${
-            window.innerWidth < 768 ? "bottom-center" : "top-right"
+            width< 768 ? "bottom-center" : "top-right"
           }`}
         />
         <div className="flex flex-col space-y-3 lg:w-1/2">
@@ -73,7 +74,7 @@ export default function Page() {
   );
 }
 
-const  ProfileForm=()=> {
+const  ProfileForm=() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
