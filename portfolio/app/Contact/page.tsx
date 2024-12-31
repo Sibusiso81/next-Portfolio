@@ -1,5 +1,4 @@
-"use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -18,6 +17,7 @@ import { complileReachoutTemplate, sendMail } from "@/lib/mail";
 import Footer from "../Components/Footer/Footer";
 import { Toaster, toast } from "sonner";
 import { redirect } from "next/navigation";
+
 const formSchema = z.object({
   username: z
     .string()
@@ -33,18 +33,23 @@ const formSchema = z.object({
 });
 
 export default function Page() {
-  const width = window.innerWidth
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Only runs in the browser
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize(); // Set the initial value
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <main className="overflow-x-hidden ">
+    <main className="overflow-x-hidden">
       <section
-        className="w-screen max-w-screen-sm lg:max-w-screen-lg h-fit  flex flex-col lg:flex-row p-4 space-y-6 lg:pl-6 lg:p-20
+        className="w-screen max-w-screen-sm lg:max-w-screen-lg h-fit flex flex-col lg:flex-row p-4 space-y-6 lg:pl-6 lg:p-20
       xl:max-w-screen-2xl xl:justify-around"
       >
-        <Toaster
-          position={`${
-            width< 768 ? "bottom-center" : "top-right"
-          }` }
-        />
+        <Toaster position={isMobile ? "bottom-center" : "top-right"} />
         <div className="flex flex-col space-y-3 lg:w-1/2">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold max-w-screen-sm">
             Reach out ✦
@@ -74,7 +79,7 @@ export default function Page() {
   );
 }
 
-const  ProfileForm=()=> {
+const ProfileForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -132,7 +137,11 @@ const  ProfileForm=()=> {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input placeholder="Enter your email" type="email" {...field} />
+                <Input
+                  placeholder="Enter your email"
+                  type="email"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -164,4 +173,4 @@ const  ProfileForm=()=> {
       </form>
     </Form>
   );
-}
+};
