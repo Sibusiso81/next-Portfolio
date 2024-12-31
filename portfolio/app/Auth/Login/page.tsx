@@ -15,7 +15,6 @@ import {
 } from "@/components/ui/form";
 
 import { Input } from "@/components/ui/input";
-
 import { login } from "../Signup/actions";
 import Google from "@/app/Components/google";
 import { Hacker } from "@/app/Components/dashboardSignInSvg";
@@ -34,7 +33,7 @@ const formSchema = z.object({
 });
 
 // Component for the login form
-export const  ProfileForm = ()=> {
+function ProfileForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {

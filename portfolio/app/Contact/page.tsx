@@ -33,9 +33,8 @@ const formSchema = z.object({
     .min(5, { message: "Message must be at least 5 characters long." }),
 });
 
-export default function Page() {
-  const [isMobile, setIsMobile] = useState(false);
 
+export default function Page() {
   useEffect(() => {
     // Only runs in the browser
     const handleResize = () => setIsMobile(window.innerWidth < 768);
@@ -43,6 +42,9 @@ export default function Page() {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+  const [isMobile, setIsMobile] = useState(false);
+
+  
 
   return (
     <main className="overflow-x-hidden">
@@ -80,7 +82,7 @@ export default function Page() {
   );
 }
 
-export const ProfileForm = () => {
+function ProfileForm  ()  {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
