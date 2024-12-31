@@ -1,5 +1,4 @@
 "use client";
-
 import React from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -16,32 +15,72 @@ import {
 
 import { Input } from "@/components/ui/input";
 
-import { login } from "../Signup/actions";
-import Google from "@/app/Components/google";
 import { Hacker } from "@/app/Components/dashboardSignInSvg";
+import Google from "@/app/Components/google";
 import Github from "@/app/Components/github";
-import Footer from "@/app/Components/Footer/Footer";
 
+
+import Link from "next/link";
+import Footer from "@/app/Components/Footer/Footer";
+import { login } from "../Signup/actions";
 const formSchema = z.object({
   password: z
-    .string()
-    .min(2, { message: "Password must be at least 2 characters long." })
-    .max(50, { message: "Password must be no longer than 50 characters." }),
-  email: z
-    .string()
-    .email({ message: "Please enter a valid email address." })
-    .max(100, { message: "Email must be no longer than 100 characters." }),
+  .string()
+  .min(2, { message: "Username must be at least 2 characters long." })
+  .max(50, { message: "Username must be no longer than 50 characters." }),
+email: z
+  .string()
+  .email({ message: "Please enter a valid email address." })
+  .max(100, { message: "Email must be no longer than 100 characters." }),
+
 });
 
-// Component for the login form
-function ProfileForm() {
+export default function Page() {
+  return (
+    <>
+     <section
+         className="max-w-screen-md  h-screen flex flex-col lg:flex-row p-4 space-y-6 mx-auto  justify-center items-center
+        "
+       >
+         <div className="lg:w-1/2 lg:p-4">
+           <Hacker />
+         </div>
+         
+         <div className="w-full md:w-1/2  space-y-4 justify-center items-center">
+         <h1 className="text-xl font-semibold text-center">Welcome Mr Zulu </h1>
+           <ProfileForm />
+         </div>
+        
+       </section>
+       <Footer/>
+    </>
+  );
+}
+
+export function ProfileForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      password: "",
+      password:'',
       email: "",
     },
   });
+
+ /*  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+
+   try {
+    const validatedData = formSchema.parse(values)
+    await signup({
+      email:validatedData.email,
+      password:validatedData.password,
+    })
+   } catch (error) {
+    toast.error('Failed to Sign Up')
+   }
+  
+  }; */
+
+
 
   return (
     <Form {...form}>
@@ -49,84 +88,80 @@ function ProfileForm() {
         <FormField
           control={form.control}
           name="email"
+          
           render={({ field }) => (
+            <>
+            
+            {/*  */}
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input
-                  className="p-4"
-                  placeholder="Enter your email"
-                  type="email"
-                  {...field}
+                <Input 
+                id='email'
+                placeholder="Enter your email" 
+                type="email" {...field}
+                
                 />
               </FormControl>
               <FormMessage />
             </FormItem>
+            </>
           )}
         />
-        <FormField
+         <FormField
           control={form.control}
           name="password"
           render={({ field }) => (
+            <>
+            
+            {/*  */}
             <FormItem>
               <FormLabel>Password</FormLabel>
               <FormControl>
-                <Input
-                  className="p-4"
-                  placeholder="Enter your password"
-                  type="password"
-                  {...field}
+                <Input 
+                id='password'
+                placeholder="Enter your email" type="password" {...field}
+                
                 />
               </FormControl>
               <FormMessage />
             </FormItem>
+            </>
           )}
         />
-        <div className="flex flex-col space-y-4">
-          <div className="flex flex-col lg:flex-row lg:space-x-4 space-y-4 lg:space-y-0">
-            <Button
-              type="button"
-              className="bg-neutral-800/30 p-4 w-full hover:bg-neutral-800/20 text-white"
-            >
-              <Google /> Log in with Google
-            </Button>
-            <Button
-              type="button"
-              className="bg-neutral-800/30 p-4 w-full hover:bg-neutral-800/20 text-white"
-            >
-              <Github /> Log in with GitHub
-            </Button>
-          </div>
-          <p className="text-muted-foreground text-center mx-auto">or</p>
-          <Button
-            type="submit"
-            formAction={login}
-            className="bg-neutral-800/30 p-4 w-full hover:bg-neutral-800/20 text-white"
-          >
-            Log in
-          </Button>
-        </div>
+       
+         <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-3">
+                 <Button type="submit" className="bg-neutral-800/30 p-4 w-full hover:bg-neutral-800/20 text-white">
+                  <Google/> Log in with Google
+                 </Button>
+                 <Button type="submit" className="bg-neutral-800/30 p-4 w-full hover:bg-neutral-800/20 text-white">
+                 <Github/>Log in with GitHub
+                 </Button>
+                 </div>
+       <div className="space-y-1">
+       <Button 
+        type="submit"
+         className="bg-neutral-800/30 p-4 w-full hover:bg-neutral-800/20 text-white"
+         formAction={login}
+         >
+          
+          Login
+        </Button>
+      
+        <p className="text-center text-muted-foreground">or</p>
+        
+        <Link href={'/Auth/Login'}>
+        <Button 
+        type="submit"
+         className="bg-neutral-800/30 p-4 w-full hover:bg-neutral-800/20 text-white"
+         
+         >
+          
+          Log in
+        </Button>
+        </Link>
+       </div>
       </form>
     </Form>
-  );
-}
-
-// Main page component
- export const Page = ()=>{
-  return (
-    <>
-      <section className="max-w-screen-md h-screen flex flex-col lg:flex-row p-4 space-y-6 mx-auto justify-center items-center">
-        <div className="lg:w-1/2 lg:p-4">
-          <Hacker />
-        </div>
-        <div className="w-full md:w-1/2 space-y-4 justify-center items-center">
-          <h1 className="text-xl font-semibold text-center">
-            Welcome Mr Zulu
-          </h1>
-          <ProfileForm />
-        </div>
-      </section>
-      <Footer />
-    </>
   );
 }
