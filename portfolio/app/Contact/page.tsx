@@ -73,7 +73,7 @@ export default function Page() {
   );
 }
 
-export function ProfileForm() {
+const  ProfileForm=()=> {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
