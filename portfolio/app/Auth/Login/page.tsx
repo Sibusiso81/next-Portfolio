@@ -112,7 +112,7 @@ function ProfileForm() {
 }
 
 // Main page component
- function Page() {
+ export const Page = ()=>{
   return (
     <>
       <section className="max-w-screen-md h-screen flex flex-col lg:flex-row p-4 space-y-6 mx-auto justify-center items-center">
